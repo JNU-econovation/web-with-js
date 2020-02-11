@@ -16,9 +16,9 @@
 
 _**기표의 고민** : node를 깔고 프로젝트를 하던 2018년 5월쯤 멘토링을 네 번정도 받은 날에 node에 개한 동영상을 보았지만 기록하지 않아서 다 까먹고 만다. 또 한 번도 이렇게 명령으를 사용하여 프로그램을 실행 해 본적이 없었기 때문에 이것이 무엇인지 많이 고민했다. 그래서 당시 **기표**는 이게 비쥬얼 스튜디오의 F5쯤 되는 거라고 이해 했다._
 
-```sequence
-Title: Thicking of Nodeyou->node: Console.log("Hi")Note right of node : thinkingnode-->you: "Hi"Note left of you :  ""Wow""
-```
+<p align="center">
+    <img src="https://user-images.githubusercontent.com/44811887/74207026-29171880-4cc1-11ea-9de4-46c2aa03adcf.png" height="400px">
+</p>
 
 ### Node 설치하기
 
