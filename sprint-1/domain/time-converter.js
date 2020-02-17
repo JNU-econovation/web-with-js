@@ -91,11 +91,4 @@ class TimeConverter {
   }
 }
 
-
-
-// tc.forEach(e => {
-//   console.log(e.convertTime());
-// });
-
-// console.log(tc[5].unit);
 module.exports = TimeConverter;
