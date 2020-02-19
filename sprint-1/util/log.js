@@ -1,8 +1,5 @@
 class Log {
-  constructor() {
-  }
-
-  log(something) {
+  static log(something) {
     console.log(`결과 "${something}"`);
   }
 }
