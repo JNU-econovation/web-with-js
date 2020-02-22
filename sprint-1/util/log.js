@@ -1,5 +1,7 @@
 class Log {
-  constructor() {}
+  static log(something) {
+    console.log(`결과 "${something}"`);
+  }
 }
 
-module.exports = TimeConverter;
+module.exports = Log;
