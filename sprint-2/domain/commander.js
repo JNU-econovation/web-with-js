@@ -1,6 +1,6 @@
-const add = (acc, crr) => {
+const add = (acc, crr, callback) => {
   crr = parseInt(crr);
-  if (isNaN(crr)) throw new Error("에러: 입력된 값이 숫자가 아닙니다");
+  if (isNaN(crr)) return callback(new Error("에러: 입력된 값이 숫자가 아닙니다"), null); // *이부분 콜백처리하는 법을 모르겠습니다!
   return acc + crr;
 }
 const count = (acc) => { return acc + 1; }
@@ -17,17 +17,21 @@ class Commander {
     this.input_array = input_array;
   }
 
-  run() {
+  run(callback) {
+    let result;
     switch (this.command) {
       case 'add':
-        return this.input_array.customReduce(add); break;
+        result = this.input_array.customReduce(add);
+        return callback(null, result);
       case 'count':
-        return this.input_array.customReduce(count); break;
+        result = this.input_array.customReduce(count);
+        return callback(null, result);
       case 'set':
-        return this.input_array.sort().customReduce(set);
+        result = this.input_array.sort().customReduce(set);
+        return callback(null, result);
         newset = [];
       default:
-        throw new Error("에러: 잘못된 command입니다.");
+        return callback(new Error("에러: 잘못된 command입니다."), null);
     }
   }
 

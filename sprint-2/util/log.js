@@ -1,6 +1,8 @@
 class Log {
-  static log(something) {
-    console.log(`${something.command}: ${something.run()}`);
+  static log(something, something2) {
+    if (typeof something === Error)
+      console.log(something.message);
+    console.log(`${something}: ${something2}`);
   }
 }
 

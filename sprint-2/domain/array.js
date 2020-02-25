@@ -6,7 +6,7 @@ Array.prototype.customReduce = function (callback, initialValue) {
   let currentValue;
 
   if (initialValue) accumulator = initialValue;
-  if (!initialValue && length === 0) throw new Error("에러: reduce할 값이 없습니다.");
+  if (!initialValue && length === 0) callback(new Error("에러: reduce할 값이 없습니다."), null);
 
   while (index < length) {
     currentValue = this[index++];
