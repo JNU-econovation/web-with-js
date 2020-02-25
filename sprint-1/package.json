@@ -1,0 +1,13 @@
+{
+  "name": "sprint-1",
+  "version": "1.0.0",
+  "description": "첫번째 학습 주제는 개발 환경의 이해로 과연 Node가 무엇인지 그리고 ECMAscript는 무엇이고 javascript는 무엇인지 알아보는 것입니다.",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc --build tsconfig.json ",
+    "do": "npm run build && node build/main.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
