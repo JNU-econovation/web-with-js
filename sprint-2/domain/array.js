@@ -1,13 +1,16 @@
-Array.prototype.customReduce = function(callback) {
-  const array = Object(this);
+Array.prototype.customReduce = function(callback, initialValue) {
+  array = Object(this);
   const length = array.length;
-  let sum=0;
-  let value;
-  for(let i=0;i<length;i++){
-    value = parseInt(array[i]);
-    sum = callback(sum, value);
+
+  let accumulator;
+  if (initialValue!=undefined) accumulator = initialValue;
+  else accumulator = parseInt(array[0]);
+
+  for(let currentIndex=1;currentIndex<length;currentIndex++){
+    currentValue = parseInt(array[currentIndex]);
+    accumulator = callback(accumulator, currentValue, currentIndex, array);
   }
-  return sum;
+  return accumulator;
 };
 
 module.exports = Array;
