@@ -1,8 +1,10 @@
 class Log {
-  static log(something, something2) {
-    if (typeof something === Error)
-      console.log(something.message);
-    console.log(`${something}: ${something2}`);
+  static log(command, result, err) {
+    if (err) {
+      console.log(err.message);
+    } else {
+      console.log(`${command}:${result}`);
+    }
   }
 }
 
