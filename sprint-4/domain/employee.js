@@ -25,12 +25,20 @@ class Employee {
     }
 
     work(burger, timeout) {
-        timeout = timeout * 1000;
+        // timeout = timeout * 1000;
         this.setStatus();
-        setTimeout(() => {
-            console.log(`Employee${this.employee_id}: ${burger}를 완성하였습니다.`);
-            this.setStatus();
-        }, timeout);
+
+        console.log("work 실행, burger:", burger, "timeout", timeout);
+
+        return new Promise((res, rej) => {
+            // console.log("promise실행");
+            setTimeout(() => {
+                console.log(`Employee${this.employee_id}: ${burger}를 완성하였습니다.`);
+                this.setStatus();
+                console.log("setTimeout안의 burger", burger)
+                res(burger);
+            }, timeout);
+        });;
     }
 }
 

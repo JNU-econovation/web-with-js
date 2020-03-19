@@ -49,33 +49,56 @@ class Shop {
 
   distributeWork(employees, number_of_each_menu) {
     let left_order = number_of_each_menu;
-    const reversed_menu = Array.from(left_order.keys()).reverse();
-    employees.forEach(employee => {
-      console.log(`직원${employee.employee_id} 살펴보는 중`)
-      for (let i = 0; i < reversed_menu.length; i++) {
-        console.log(`${reversed_menu[i]}살펴보는 중`)
-        if (left_order.get(reversed_menu[i]) == 0) {
-          console.log(`${reversed_menu[i]} 다 만들었음`);
-          continue;
+    const reversed_menu = Array.from(left_order.keys()).reverse(); // 오래 걸리는 버거부터 분배하기 위해 reverse
+    let total_burger = Array.from(left_order.values()).reduce((acc, cur) => acc + cur);
+    while (total_burger !== 0) {
+      employees.forEach(async employee => {
+        console.log("foreach실행")
+        // if (total_burger === 0) return;
+
+        let burger = this.checkEmployee(employee, left_order, reversed_menu);
+        if (burger) {
+          left_order.set(reversed_menu[burger], left_order.get(reversed_menu[burger]) - 1);
+          total_burger--;
+          console.log(total_burger);
+          this.giveWork(employee, burger).then(cooked_burger => console.log("while의 forEach안의 if 안의 cooked_burger", cooked_burger));
+
         }
-        if (employee.isWorking()) {
-          console.log(`직원${employee.employee_id} 일하고 있음`);
-          break;
-        }
-        if (employee.burgers_in_charge.find(burger => burger === reversed_menu[i])) {
-          console.log("세번째 if문")
-          this.giveWork(employee, reversed_menu[i]);
-          left_order.set(reversed_menu[i], left_order.get(reversed_menu[i]) - 1);
-        }
-        console.log("아무것도 해당 안됨");
-      }
-    });
+
+      });
+    }
+    console.log("분배 완료");
   }
 
-  giveWork(employee, burger) {
-    console.log(employee.employee_id, burger);
+  checkEmployee(employee, left_order, reversed_menu) {
+
+    // console.log(`직원${employee.employee_id} 살펴보는 중`)
+
+    for (let i = 0; i < reversed_menu.length; i++) {
+      // console.log(`${reversed_menu[i]}살펴보는 중`)
+      if (left_order.get(reversed_menu[i]) == 0) {
+        console.log(`${reversed_menu[i]} 다 만들었음`);
+        continue; // 다음 메뉴 살펴봄
+      }
+      if (employee.isWorking()) {
+        // console.log(`직원${employee.employee_id} 일하고 있음`);
+        return false;
+      }
+      if (employee.burgers_in_charge.find(burger => burger === reversed_menu[i])) {
+        console.log("3번째 if문");
+        return reversed_menu[i];
+      }
+    }
+    console.log("아무것도 해당하지 않음");
+    return false;
+  }
+  async giveWork(employee, burger) {
+    console.log("giveWork", employee.employee_id, burger);
     const timeout = this.burgers[burger];
-    employee.work(burger, timeout);
+    const result = await employee.work(burger, timeout);
+    console.log("giveWork의 result", result);
+    const cooked_burger = (`Employee${employee.employee_id}: ${result}를 완성하였습니다.`);
+    return cooked_burger;
   }
 }
 
