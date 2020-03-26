@@ -2,7 +2,7 @@ const Person = require('./domain/person');
 const Game369 = require('./domain/game369');
 
 function main() {
-    console.log("<< A와 B가 게임. accuracy 기본값 0.5 >>\n");
+    // console.log("<< A와 B가 게임. accuracy 기본값 0.5 >>\n");
     const personA = new Person('A');
     const personB = new Person('B');
 
@@ -10,7 +10,7 @@ function main() {
 
     personA.enterGame(game369);
     personB.enterGame(game369);
-    personA.startGame();
+    // personA.startGame();
 
     console.log("\n");
 
@@ -23,11 +23,6 @@ function main() {
     personB.setAccuracy(0.78);
     personC.setAccuracy(0.99);
     personB.startGame();
-
-    // console.log(personA);
-    // console.log(personB);
-
-
 
 }
 

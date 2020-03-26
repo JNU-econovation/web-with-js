@@ -23,20 +23,20 @@ class Game369 extends EventEmitter {
         this.emit(starter, number, this.participants);
     }
 
-    progressGame(name, number) {
+    async progressGame(name, number) {
         if (this.is369(number)) { // 박수를 쳐야 할 때
             const index = this.findIndex(name);
             if (this.clapOrNot(this.participants[index].accuracy)) {
-                this.doAction(name, "clap!");
+                await this.doAction(name, "clap!");
                 this.emit(this.findNext(name), ++number);
             }
             else {
-                this.doAction(name, number);
+                const promise = await this.doAction(name, number);
                 console.log(`${name}이(가) 게임에서 졌습니다`);
                 this.emit("end");
             }
         } else
-            this.play(name, number);
+            await this.play(name, number);
     }
 
     is369(number) {
@@ -58,14 +58,19 @@ class Game369 extends EventEmitter {
         return false;
     }
 
-    play(name, number) {
-        this.doAction(name, number);
+    async play(name, number) {
+        const promise = await this.doAction(name, number);
         let next = this.findNext(name)
         this.emit(next, ++number);
     }
 
     doAction(name, action) {
-        console.log(`${name}: ${action}`);
+        return new Promise((res) => {
+            setTimeout(() => {
+                console.log(`${name}: ${action}`);
+                res(true);
+            }, 1000);
+        })
     }
 
     findNext(name) {
