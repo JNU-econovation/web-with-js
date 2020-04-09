@@ -11,7 +11,7 @@ class Shop {
     console.log("shop에서 employ중");
     let recruiting = 0;
     while (recruiting++ < this.number_of_employee) {
-      this.employees.push(new Employee(recruiting + 1));
+      this.employees.push(new Employee(recruiting));
     }
     this.employees.forEach(e => {
       console.log(e);
@@ -32,7 +32,7 @@ class Shop {
         console.log("주문이 완료되었습니다");
         clearInterval(timer);
       }
-      console.log("left_ordert:", left_order)
+      console.log("left_order:", left_order)
       task = (left_order > this.number_of_employee ? this.number_of_employee : left_order);
       console.log("task:", task);
       this.distributeTask(task)
