@@ -8,10 +8,10 @@ class TimeConverter {
   constructor(args) {
     this.caseTime = args.slice(0, -2); //시간
     this.caseUnit = args.slice(-1); //단위
-    this.timeUnit = this.caseTime.slice(-1);
+    // this.timeUnit = this.caseTime.slice(-1);
   }
-  changeToS() {
-    // let timeUnit = this.caseTime.slice(-1);
+  changeToS(caseTime) {
+    let timeUnit = this.caseTime.slice(-1);
     let time = parseInt(this.caseTime);
     if (timeUnit == "m") {
       totalSec += time * MtoS;
@@ -22,11 +22,11 @@ class TimeConverter {
     if (timeUnit == "d") {
       totalSec += time = DtoS;
     }
-    console.log(totalSec);
+    console.log("totalSec : " + totalSec);
     return totalSec;
   }
   converter() {
-    let totalSec = this.changeToS();
+    let totalSec = this.changeToS(this.caseTime);
     const result = {
       H: 0,
       M: 0,

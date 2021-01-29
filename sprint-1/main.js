@@ -15,8 +15,9 @@ function main() {
   //   result0.print();
   //   new Log(case0.changeToS().converter()).print();
 
-  let case1 = new TimeConverter(caseTime[0]).changeToS();
-  new Log(converter(case1)).print();
+  let case1 = new TimeConverter(caseTime[0]);
+  new Log(case1
+    .converter()).print();
 
   //   let case2 = new TimeConverter(caseTime[2]);
   //   new Log(case2.converter()).print();
