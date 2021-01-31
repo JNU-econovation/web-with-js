@@ -1,0 +1,4 @@
+class Shop {
+  constructor() {}
+  order() {}
+}
