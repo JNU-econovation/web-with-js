@@ -23,15 +23,7 @@ class TimeConverter {
   }
 
   toToTalSecond(input_time) {
-    let total_sec = 0;
-    for (let [key, value] of input_time) {
-      if (key === 's') total_sec += value;
-      if (key === 'm') total_sec += value * M_to_s;
-      if (key === 'h') total_sec += value * H_to_s;
-      if (key === 'd') total_sec += value * D_to_S;
-    }
-
-    return total_sec;
+    return input_time.s + (input_time.m * M_to_s) + (input_time.h * H_to_s) + (input_time.d * D_to_S);
   }
 
   toMinute(total_sec) {
@@ -54,12 +46,9 @@ class TimeConverter {
 
   handleInputParamsNumberError() {
     if (this.unit === undefined)
-      throw new Error("에러: 입력이 올바르지 않습니다.");
+      throw new Error("입력이 올바르지 않습니다.");
   }
 
 }
 
-// let testtime = new Timetool("1h35m");
-// let testTC = new TimeConverter(testtime.time, "s");
-// console.log(testTC.convertTime());
 module.exports = TimeConverter;
