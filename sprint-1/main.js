@@ -8,10 +8,10 @@ function main() {
 
     testcase.forEach(tc => {
         try {
-            let time = new Time(tc.split(" ")[0]);
-            let TC = new TimeConverter(time.time, tc.split(" ")[1]);
-
-            Log.log(TC.convertTime());
+            const time = new Time(tc.split(" ")[0]);
+            const TC = new TimeConverter(time, tc.split(" ")[1]);
+            const converted_time = TC.convertTime();
+            Log.timelog(converted_time);
         } catch (err) {
             Log.err(err.message);
         }

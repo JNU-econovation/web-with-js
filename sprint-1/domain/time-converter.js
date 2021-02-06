@@ -1,46 +1,47 @@
+const Time = require("./Time");
+
 const D_to_S = 86400;
 const H_to_s = 3600;
 const M_to_s = 60;
-const MaptoString = require("../util/MaptoString.js");
 
 class TimeConverter {
-  constructor(Time, unit) {
-    this.time = Time;
+  constructor(time, unit) {
+    this.time = time;
     this.unit = unit;
-    this.output_time = new Map();
+    this.converted_time = new Time();
   }
 
   convertTime() {
     this.handleInputParamsNumberError();
     let total_sec = this.toToTalSecond(this.time);
 
-    if (this.unit === 's') this.output_time.set('s', total_sec);
+    if (this.unit === 's') this.converted_time.set('s', total_sec);
     if (this.unit === 'm') this.toMinute(total_sec);
     if (this.unit === 'h') this.toHour(total_sec);
     if (this.unit === 'd') this.toDay(total_sec);
 
-    return MaptoString(this.output_time);
+    return this.converted_time;
   }
 
-  toToTalSecond(input_time) {
-    return input_time.s + (input_time.m * M_to_s) + (input_time.h * H_to_s) + (input_time.d * D_to_S);
+  toToTalSecond(time) {
+    return time.sec + (time.min * M_to_s) + (time.hour * H_to_s) + (time.day * D_to_S);
   }
 
   toMinute(total_sec) {
     let min = parseInt(total_sec / M_to_s);
-    this.output_time.set("m", min);
-    this.output_time.set("s", total_sec % M_to_s);
+    this.converted_time.set("m", min);
+    this.converted_time.set("s", total_sec % M_to_s);
   }
 
   toHour(total_sec) {
     let hour = parseInt(total_sec / H_to_s);
-    this.output_time.set("h", hour);
+    this.converted_time.set("h", hour);
     this.toMinute(total_sec % H_to_s);
   }
 
   toDay(total_sec) {
     let day = parseInt(total_sec / D_to_S);
-    this.output_time.set("d", day);
+    this.converted_time.set("d", day);
     this.toHour(total_sec % D_to_S);
   }
 
