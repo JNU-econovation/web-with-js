@@ -1,19 +1,20 @@
 const array = require("./array");
 
-const add = (acc, crr) => {
+const add_reducer = (acc, crr) => {
   crr = parseInt(crr);
   if (isNaN(crr))
     throw new Error("에러: 입력된 값이 숫자가 아닙니다.");
   return acc + crr;
 }
 
-const count = (acc) => { return acc + 1; }
+const count_reducer = (acc) => { return acc + 1; }
 
-let newset;
-const set = (acc, crr) => {
-  if (newset.length === 0 || newset[newset.length - 1] !== crr)
-    newset.push(crr);
-  return newset;
+const set_reducer = (acc, crr) => {
+  if (!acc)
+    acc = [];
+  if (acc.length === 0 || acc[acc.length - 1] !== crr)
+    acc.push(crr);
+  return acc;
 }
 
 class Commander {
@@ -28,18 +29,16 @@ class Commander {
     switch (this.command) {
       case 'add':
         try {
-          result = this.input_array.customReduce(add);
+          result = this.input_array.customReduce(add_reducer);
           return callback(null, result);
         } catch (err) {
           return callback(err, null);
         }
-
       case 'count':
-        result = this.input_array.customReduce(count);
+        result = this.input_array.customReduce(count_reducer);
         return callback(null, result);
       case 'set':
-        newset = [];
-        result = this.input_array.sort().customReduce(set);
+        result = this.input_array.sort().customReduce(set_reducer);
         return callback(null, result);
       default:
         return callback(new Error("에러: 잘못된 command입니다."), null);
