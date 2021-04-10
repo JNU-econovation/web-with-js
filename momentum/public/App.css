@@ -1,0 +1,173 @@
+body {
+  color: #FFFFFF;
+}
+
+form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+input {
+  width: 100%;
+  background-color: transparent;
+  border: none;
+  border-bottom: 3px solid white;
+  font-size: 100%;
+  color: #FFFFFF;
+  text-align: center;
+}
+
+input:focus { 
+  outline: none;
+}
+
+button:focus {
+  outline: none;
+}
+
+.backgorund-container {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.background-image-div {
+  background-image: linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(./images/pexels-timothy-paule-ii-2002719.jpg);
+  background-size: cover;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  top: 50vh;
+  left: 50vw;
+  transform: translate(-50vw, -50vh);
+}
+
+.center-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.center-wrapper {
+  padding: 0 40px;
+  text-align: center;
+}
+
+.question {
+  font-size: 9vh;
+  font-weight: 450;
+  line-height: 10vh;
+  padding-bottom: 15px;
+  white-space: normal;
+  text-align: center;
+}
+
+.big-input {
+  font-size: 300%;
+  font-weight: bold;
+  border-bottom: 4px solid white;
+}
+
+.button-wrapper {
+  padding: 0 auto;
+  margin-top: 2rem;
+  height: 2rem;
+  text-align: center;
+}
+
+.submit {
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 9px 23px;
+  border: 2px solid white;
+  border-radius: 50px;
+  color: white;
+  font-weight: bolder;
+  cursor: pointer;
+}
+
+.submit:hover {
+  background-color: transparent;
+}
+
+.clock {
+  font-size: 20vh;
+  letter-spacing: -0.5px;
+  line-height: 20vh;
+  font-weight: 550;
+}
+
+.big-message {
+  font-size: 7vh;
+  font-weight: 600;
+}
+
+.focus-wrapper {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.focus-question {
+  font-size: 5vh;
+  padding: 0;
+}
+
+.focus-input {
+  font-size: 5vh;
+  font-weight: bold;
+}
+
+.today {
+  margin-top: 40px;
+  line-height: 5vh;
+  font-size: 3vh;
+  font-weight: bolder;
+}
+
+.focus-content-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.focus-checkbox {
+  width: 3vh;
+  height: 3vh;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.focus-content-wrapper:hover .focus-checkbox {
+  border: 2px solid white;
+}
+
+.focus-checkbox.checked{
+  border: 2px solid white;
+}
+
+.focus-checkbox.checked::before{
+  content: '\2714';
+}
+
+.focus-content {
+  font-size: 5vh;
+  font-weight: 500;
+  padding: 0 1vw;
+}
+
+.focus-content.checked {
+  text-decoration-line: line-through;
+}
+
+.focus-remove-button {
+  width: 3vh;
+  height: 3vh;
+  box-sizing: border-box;
+}
+
+.focus-content-wrapper:hover .focus-remove-button::before {
+  content: "\2715";
+  text-align: center;
+}
