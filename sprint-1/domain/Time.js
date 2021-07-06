@@ -1,26 +1,42 @@
-const MaptoString = require("../util/MaptoString.js");
 const UnitParser = require("../util/UnitParser.js");
 
-const units = ['d', 'h', 'm', 's'];
-
 class Time {
-    constructor(String) {
-        this.input_time_string = String;
-        this.setTime();
+    static units = ['d', 'h', 'm', 's'];
+    constructor(string) {
+        this.day = 0;
+        this.hour = 0;
+        this.min = 0;
+        this.sec = 0;
+        this.initTime(string);
     }
 
-    setTime() {
-        this.time = UnitParser(this.input_time_string, units);
+    initTime(string) {
+        if (string) {
+            const unit_value = UnitParser(string, Time.units);
+            this.day = unit_value.d;
+            this.hour = unit_value.h;
+            this.min = unit_value.m;
+            this.sec = unit_value.s;
+        }
+    }
 
-        // sprint1 문제 해결에는 필요 없지만 Time클래스라면 객체명.time.h, 객체명.time.m 등 말고 객체명.hour, 객체명.min 등으로 바로 쓸 수 있는 필드가 있으면 좋겠다는 생각에 추가해봄, syntax 확인 필요
-        this.day = this.time[0];
-        this.hour = this.time[1];
-        this.min = this.time[2];
-        this.sec = this.time[3];
+    set(unit, value) {
+        if (unit === 'd')
+            this.day = value;
+        if (unit === 'h')
+            this.hour = value;
+        if (unit === 'm')
+            this.min = value;
+        if (unit === 's')
+            this.sec = value;
     }
 
     toString() {
-        return MaptoString(this.time);
+        const daystr = this.day ? this.day + 'm' : "";
+        const hourstr = this.hour ? this.hour + 'h' : "";
+        const minstr = this.min ? this.min + 'm' : "";
+        const secstr = this.sec ? this.sec + 's' : "'";
+        return daystr + hourstr + minstr + secstr;
     }
 }
 
