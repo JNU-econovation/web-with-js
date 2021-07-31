@@ -10,7 +10,5 @@ class TimeConverter {
   }
 };
 
-module.exports = TimeConverter;
-
 
 // s : 초, m : 분, h : 시, d : 일
