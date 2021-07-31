@@ -1,3 +1,5 @@
-function main() {}
+function main() {
+    console.log("hello")
+}
 
 main();
