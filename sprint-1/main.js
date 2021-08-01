@@ -1,3 +1,5 @@
-function main() {}
-
-main();
+class Log {
+    constructor() {}
+  }
+  
+  module.exports = TimeConverter;  
