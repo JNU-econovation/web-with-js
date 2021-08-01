@@ -1,5 +1,5 @@
-function main() {
-    console.log("hello")
-}
-
-main();
+class Log {
+    constructor() {}
+  }
+  
+  module.exports = TimeConverter;  
