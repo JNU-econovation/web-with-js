@@ -163,7 +163,7 @@ console.log("age: ", age); // age: 26
 ```javascript
 //변수의 선언과 재할당에 관해서
 let name;
-const deall; //error : 값할당이 안괴어 있다.
+const deall; //error : 값할당이 안되어 있다.
 let name; // error : 이미 같은 이름을 가진 변수가 있다
 const age = 36;age = 26; // error: const는 값을 변경할 수 없다.
 name = "kiki";
@@ -180,7 +180,7 @@ console.log(name); // "kiki"
 
 ### 6. Class
 
-원래 자바스크립트에서는 class 가 존재하지 않았습니다. 비슷하게 동작하는 protorype과 같은 것이 있었기 때문입니다. 하지만 class가 생기게 되면서 자바스크립트는 풍부해졌습니다. 하지만 아쉽게도 아직 인터페이스나 프라이빗과 같은 것들이 완전히 구현 된 것이 아니지만 이것에 대한 대안으로 typescript가 존재하기 때문에 다음에 시간이 된다면 typescript도 동부 해보시면 좋을 것 같습니다.
+원래 자바스크립트에서는 class 가 존재하지 않았습니다. 비슷하게 동작하는 prototype과 같은 것이 있었기 때문입니다. 하지만 class가 생기면서 자바스크립트는 풍부해졌습니다. 하지만 아쉽게도 아직 interface나 private과 같은 것들이 완전히 구현 된 것이 아니지만 이것에 대한 대안으로 typescript가 존재하기 때문에 다음에 시간이 된다면 typescript도 공부 해보시면 좋을 것 같습니다.
 
 ```javascript
 class Person{
@@ -195,12 +195,12 @@ class Person{
 const person = new Person("kiki", 26, "01000000000");
 console.log(person.name); // kiki
 console.log(person.age); // 26
-console.log(person.#phonNumber); // 프라이빗 밸류 오류
+console.log(person.#phonNumber); // private value error
 ```
 
 예시에서 보시는 것 과 같이 Person 내부에서는 this를 이용하여 자신의 프로퍼티와 함수를 자유롭게 사용할 수 있습니다.
 
-이 외에도 중요한 기능이 매우 많지만 어떤 기능은 다른 챕터에서 깊이 들어갈 것이므로 필요하다면 직접 찾아보면 더 도움이 되실 것 같습니다.
+이 외에도 중요한 기능이 매우 많지만 몇몇 기능은 다른 챕터에서 깊이 들어갈 것이므로 필요하다면 직접 찾아보면 더 도움이 되실 것 같습니다.
 
 #### 참고자료
 
