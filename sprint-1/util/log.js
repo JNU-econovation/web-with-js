@@ -2,4 +2,4 @@ class Log {
   constructor() {}
 }
 
-module.exports = TimeConverter;
+module.exports = Log;
