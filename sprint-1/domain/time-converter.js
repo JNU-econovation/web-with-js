@@ -4,6 +4,7 @@ const MinPerSec = 60;
 const Parser = require("./parser");
 const PARSE_SUCCESS = true;
 const PARSE_FAIL = false;
+
 class TimeConverter {
   constructor(command) {
     this.command = command;

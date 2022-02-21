@@ -45,9 +45,20 @@ class Parser {
   };
 
   isSplitCommandValid = (splitCommand) => {
-    return splitCommand.length == 2 && splitCommand[1].length == 1;
+    return (
+      splitCommand.length == 2 &&
+      splitCommand[1].length == 1 &&
+      !(true && this.filterInt(splitCommand[0])) &&
+      !(true && this.filterInt(splitCommand[1]))
+    );
   };
-
+  filterInt = (value) => {
+    if (/^[-+]?(\d+|Infinity)$/.test(value)) {
+      return Number(value);
+    } else {
+      return NaN;
+    }
+  };
   parseCommand = () => {
     if (
       !(
