@@ -12,10 +12,12 @@ const inputList = [
   "12h 2",
 ];
 
+// 프로그램
 for (let i = 0; i < inputList.length; i++) {
   console.log(i + 1 + "번째 입력 --------------");
   console.log("입력 :" + inputList[i]);
   const test = new TimeConverter(inputList[i]);
+
   if (test.setUpCommandParser()) {
     test.convertTimeToSec();
     let convertResultTime = test.convertTimeInSecUseBaseUnit();

@@ -10,6 +10,7 @@ class Parser {
     this.convertTargetTime = "";
   }
 
+  // 유효한 단어를 사용하였는지 검증
   isUsingValidWord = (command) => {
     const validCharList = ["s", "d", "m", "h", " "];
     for (let i = 0; i < 10; i++) {
@@ -31,7 +32,8 @@ class Parser {
     }
   };
 
-  isReliableInput = (command) => {
+  // 입력이 유효한지 검증
+  isValidInput = (command) => {
     try {
       const splitCommand = command.split(" ");
       if (!this.isSplitCommandValid(splitCommand)) {
@@ -44,6 +46,7 @@ class Parser {
     }
   };
 
+  // 쪼갠 명령어가 유효한지 검증
   isSplitCommandValid = (splitCommand) => {
     return (
       splitCommand.length == 2 &&
@@ -52,6 +55,8 @@ class Parser {
       !(true && this.filterInt(splitCommand[1]))
     );
   };
+
+  //정수형인지 엄격한 검증
   filterInt = (value) => {
     if (/^[-+]?(\d+|Infinity)$/.test(value)) {
       return Number(value);
@@ -59,12 +64,12 @@ class Parser {
       return NaN;
     }
   };
+
+  // 입력 파싱
   parseCommand = () => {
+    // 유효하지 않다면 Null 반환
     if (
-      !(
-        this.isReliableInput(this.command) &&
-        this.isUsingValidWord(this.command)
-      )
+      !(this.isValidInput(this.command) && this.isUsingValidWord(this.command))
     ) {
       return null;
     }

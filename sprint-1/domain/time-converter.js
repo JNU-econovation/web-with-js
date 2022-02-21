@@ -18,6 +18,7 @@ class TimeConverter {
     this.resultSec = 0;
   }
 
+  // 파싱된 명령어를 받아옴.
   setUpCommandParser = () => {
     const parseList = this.commandParser.parseCommand();
     if (parseList === null) {
@@ -27,6 +28,7 @@ class TimeConverter {
     return PARSE_SUCCESS;
   };
 
+  // 파싱된 명령어 중 시간 부분을 일단 초 단위로 바꿈
   convertTimeToSec = () => {
     let numericStart = 0;
     let numericString = "";
@@ -59,6 +61,7 @@ class TimeConverter {
     this.timeInSec = second;
   };
 
+  // 입력으로 주어진 단위에 따라 시간을 나눔.
   convertTimeInSecUseBaseUnit = () => {
     let leftOverSec = this.timeInSec;
 
