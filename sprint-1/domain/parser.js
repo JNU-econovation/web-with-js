@@ -7,7 +7,7 @@ class Parser {
     this.convertTargetTime = "";
   }
 
-  checkUsingValidWord(command) {
+  checkUsingValidWord = (command) => {
     const validCharList = ["s", "d", "m", "h", " "];
     for (let i = 0; i < 10; i++) {
       validCharList.push(i + "");
@@ -22,9 +22,9 @@ class Parser {
     } catch (error) {
       console.log(error.message);
     }
-  }
+  };
 
-  checkReliableInput(command) {
+  checkReliableInput = (command) => {
     try {
       const splitCommand = command.split();
       if (!this.isSplitCommandValid(splitCommand)) {
@@ -33,20 +33,22 @@ class Parser {
     } catch (error) {
       console.log(error.message);
     }
-  }
+  };
 
-  isSplitCommandValid(splitCommand) {
+  isSplitCommandValid = (splitCommand) => {
     return !(splitCommand.length != 2 || splitCommand[1].length != 1);
-  }
+  };
 
-  parseCommand(command) {
+  parseCommand = (command) => {
     this.checkReliableInput(command);
     this.checkUsingValidWord(command);
 
     const splitCommand = command.split();
     this.convertTargetTime = splitCommand[0];
     this.baseUnit = splitCommand[1];
-  }
+  };
+
+  getConvertTargetTime = () => {};
 }
 
 module.exports = Parser;
