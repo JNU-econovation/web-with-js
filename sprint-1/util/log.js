@@ -11,9 +11,13 @@ class Log {
 
   convertToSeconds() {
     for (let [index, key] of this.#timeKeys.entries()) {
-      if (key in this.converted) {
-        this.#totalSeconds += this.converted[key] * this.#multiplyValues[index];
-      }
+      this.makeTotalSeconds(index, key);
+    }
+  }
+
+  makeTotalSeconds(index, key) {
+    if (key in this.converted) {
+      this.#totalSeconds += this.converted[key] * this.#multiplyValues[index];
     }
   }
 
