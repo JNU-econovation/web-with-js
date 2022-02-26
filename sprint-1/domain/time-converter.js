@@ -5,16 +5,21 @@ class TimeConverter {
     this.beforeConvert = beforeConvert;
   }
 
-  converter() {
+  splitByUnit(unit) {
     let afterSplit = [];
+
+    if (this.beforeConvert.indexOf(unit) != -1) {
+      afterSplit = this.beforeConvert.split(unit);
+      this.beforeConvert = afterSplit[1];
+      this.#result[unit] = Number(afterSplit[0]);
+    }
+  }
+
+  converter() {
     const timeKeys = ["d", "h", "m", "s"];
 
     for (let key of timeKeys) {
-      if (this.beforeConvert.indexOf(key) != -1) {
-        afterSplit = this.beforeConvert.split(key);
-        this.beforeConvert = afterSplit[1];
-        this.#result[key] = Number(afterSplit[0]);
-      }
+      this.splitByUnit(key);
     }
     return this.#result;
   }
