@@ -1,28 +1,28 @@
 class Log {
   #result = "";
-  #totalSeconds = 0;
-  #timeKeys = ["d", "h", "m", "s"];
+  #resultOfConvertingToSeconds = 0;
+  #timeUnits = ["d", "h", "m", "s"];
   #multiplyValues = [86400, 3600, 60, 1];
 
-  constructor(converted, afterConvertUnit) {
+  constructor(converted, targetUnit) {
     this.converted = converted;
-    this.afterConvertUnit = afterConvertUnit;
+    this.targetUnit = targetUnit;
   }
 
   convertToSeconds() {
-    for (let [index, key] of this.#timeKeys.entries()) {
-      this.makeTotalSeconds(index, key);
+    for (let [index, unit] of this.#timeUnits.entries()) {
+      this.makeresultOfConvertingToSeconds(index, unit);
     }
   }
 
-  makeTotalSeconds(index, key) {
-    if (key in this.converted) {
-      this.#totalSeconds += this.converted[key] * this.#multiplyValues[index];
+  makeresultOfConvertingToSeconds(index, unit) {
+    if (unit in this.converted) {
+      this.#resultOfConvertingToSeconds += this.converted[unit] * this.#multiplyValues[index];
     }
   }
 
-  convertToAfterUnit() {
-    let targetIndex = this.#timeKeys.findIndex(value => value === this.afterConvertUnit);
+  converToTargetUnit() {
+    let targetIndex = this.#timeUnits.findIndex(value => value === this.targetUnit);
     this.makeAfterUnit(targetIndex);
   }
 
@@ -31,10 +31,10 @@ class Log {
     let rest;
 
     for (let idx = targetIdx; idx < 4; idx++) {
-      value = parseInt(this.#totalSeconds / this.#multiplyValues[idx]);
-      rest = this.#totalSeconds - (value * this.#multiplyValues[idx]);
-      this.#result += value + this.#timeKeys[idx];
-      this.#totalSeconds = rest
+      value = parseInt(this.#resultOfConvertingToSeconds / this.#multiplyValues[idx]);
+      rest = this.#resultOfConvertingToSeconds - (value * this.#multiplyValues[idx]);
+      this.#result += value + this.#timeUnits[idx];
+      this.#resultOfConvertingToSeconds = rest
       if (!rest) {
         break
       }
@@ -43,7 +43,7 @@ class Log {
 
   print() {
     this.convertToSeconds();
-    this.convertToAfterUnit();
+    this.converToTargetUnit();
     console.log(this.#result);
   }
 }
