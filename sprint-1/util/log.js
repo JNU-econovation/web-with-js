@@ -18,14 +18,18 @@ class Log {
   }
 
   convertToAfterUnit() {
-    let value = 0
-    let rest = 0
-
     let targetIndex = this.#timeKeys.findIndex(value => value === this.afterConvertUnit);
-    for (let idx = targetIndex; idx < 4; idx++) {
-      value = parseInt(this.#totalSeconds / this.#multiplyValues[idx])
-      rest = this.#totalSeconds - (value * this.#multiplyValues[idx])
-      this.#result += value + this.#timeKeys[idx] + ''
+    this.makeAfterUnit(targetIndex);
+  }
+
+  makeAfterUnit(targetIdx) {
+    let value;
+    let rest;
+
+    for (let idx = targetIdx; idx < 4; idx++) {
+      value = parseInt(this.#totalSeconds / this.#multiplyValues[idx]);
+      rest = this.#totalSeconds - (value * this.#multiplyValues[idx]);
+      this.#result += value + this.#timeKeys[idx];
       this.#totalSeconds = rest
       if (!rest) {
         break
