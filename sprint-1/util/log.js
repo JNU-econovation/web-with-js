@@ -18,11 +18,17 @@ class Log {
   }
 
   convertToAfterUnit() {
-    for (let [index, key] of this.#timeKeys.entries()) {
-      if (this.convertToAfterUnit === key) {
-        this.#result += this.#totalSeconds / this.#multiplyValues[index];
-        this.#result += key;
-        this.#totalSeconds % this.#multiplyValues[index];
+    let value = 0
+    let rest = 0
+
+    let targetIndex = this.#timeKeys.findIndex(value => value === this.afterConvertUnit);
+    for (let idx = targetIndex; idx < 4; idx++) {
+      value = parseInt(this.#totalSeconds / this.#multiplyValues[idx])
+      rest = this.#totalSeconds - (value * this.#multiplyValues[idx])
+      this.#result += value + this.#timeKeys[idx] + ''
+      this.#totalSeconds = rest
+      if (!rest) {
+        break
       }
     }
   }
