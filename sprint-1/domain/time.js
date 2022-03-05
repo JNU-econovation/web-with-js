@@ -3,37 +3,17 @@ const { DIGIT } = require("../constants.js");
 class Time {
   static units = ["d", "h", "m", "s"];
 
-  constructor(time) {
-    this.day = 0;
-    this.hour = 0;
-    this.minute = 0;
-    this.second = 0;
-    this.preprocessing(time);
+  constructor({ day = 0, hour = 0, minute = 0, second = 0 }) {
+    this.day = day;
+    this.hour = hour;
+    this.minute = minute;
+    this.second = second;
+  }
+
+  adjustAllUnit() {
     this.adjustSecond();
     this.adjustMinute();
     this.adjustHour();
-  }
-
-  preprocessing(time) {
-    let tmp = "";
-
-    for (let i of time) {
-      if (!Time.units.includes(i)) {
-        tmp += i;
-        continue;
-      }
-
-      if (i === "d") {
-        this.day += Number(tmp);
-      } else if (i === "h") {
-        this.hour += Number(tmp);
-      } else if (i === "m") {
-        this.minute += Number(tmp);
-      } else if (i === "s") {
-        this.second += Number(tmp);
-      }
-      tmp = "";
-    }
   }
 
   adjustSecond() {
@@ -63,7 +43,7 @@ class Time {
 
     const curHour = this.hour;
     this.hour = curHour % DIGIT.HOUR;
-    this.day = Math.floor(curHour / DIGIT.HOUR);
+    this.day += Math.floor(curHour / DIGIT.HOUR);
   }
 }
 
