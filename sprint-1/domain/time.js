@@ -1,8 +1,6 @@
 const { DIGIT } = require("../constants.js");
 
 class Time {
-  static units = ["d", "h", "m", "s"];
-
   constructor({ day = 0, hour = 0, minute = 0, second = 0 }) {
     this.day = day;
     this.hour = hour;
