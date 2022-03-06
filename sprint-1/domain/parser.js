@@ -1,7 +1,7 @@
 const ERROR_INVALID_WORD_MESSAGE = "에러: 허용하지 않는 단어가 존재합니다.";
 const ERROR_INVALID_INPUT_MESSAGE = "에러 : 입력이 올바르지 않습니다.";
-const STATUS_OK = true;
-const STATUS_FAIL = false;
+const VALID = true;
+const UNVALID = false;
 
 class Parser {
   constructor(command) {
@@ -25,10 +25,10 @@ class Parser {
           );
         }
       }
-      return STATUS_OK;
+      return VALID;
     } catch (error) {
       console.log(error.message);
-      return STATUS_FAIL;
+      return UNVALID;
     }
   };
 
@@ -39,10 +39,10 @@ class Parser {
       if (!this.isSplitCommandValid(splitCommand)) {
         throw new Error(ERROR_INVALID_INPUT_MESSAGE);
       }
-      return STATUS_OK;
+      return VALID;
     } catch (error) {
       console.log(error.message);
-      return STATUS_FAIL;
+      return UNVALID;
     }
   };
 
