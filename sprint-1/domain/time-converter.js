@@ -2,9 +2,10 @@ const Time = require("./time.js");
 const ValidationError = require("../util/error.js");
 
 const { parseToTime } = require("./time-parser.js");
-const { isSplittableBy } = require("../util/validator.js");
+const { isSplittableBy, consistOfNumAnd } = require("../util/validator.js");
 
 const {
+  TIME_UNIT,
   DELIMITER,
   DAY_TO,
   HOUR_TO,
@@ -20,6 +21,9 @@ class TimeConverter {
   convert(command) {
     if (!isSplittableBy(DELIMITER, command)) {
       return new ValidationError(ERR_MSG.UNCOMPLETE_INPUT);
+    }
+    if (!consistOfNumAnd(TIME_UNIT, command)) {
+      return new ValidationError(ERR_MSG.INVALID_VALUE);
     }
 
     const [timeString, unit] = command.split(" ");

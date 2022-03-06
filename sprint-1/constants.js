@@ -25,7 +25,7 @@ const DELIMITER = " ";
 const ERR_MSG = {
   UNCOMPLETE_INPUT: "입력이 올바르지 않습니다.",
   INVALID_UNIT: "변환 단위가 기준 시간보다 큽니다.",
-  INVALID_INPUT: "허용되지 않는 단어가 존재합니다.",
+  INVALID_VALUE: "허용되지 않는 단어가 존재합니다.",
 };
 
 module.exports = {
