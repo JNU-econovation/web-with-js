@@ -19,7 +19,7 @@ function main() {
     if (error) {
       log.err(error);
     } else {
-      console.log(timeConverter.convertedTime);
+      log.time(timeConverter.convertedTime);
     }
   }
 }

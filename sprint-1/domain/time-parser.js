@@ -1,11 +1,11 @@
-const { TIME_UNIT } = require("../constants.js");
+const { TIME_FORMAT } = require("../constants.js");
 
 const parseToTime = (expression) => {
   let value = "";
   const time = { day: 0, hour: 0, minute: 0, second: 0 };
 
   for (let str of expression) {
-    if (!TIME_UNIT.includes(str)) {
+    if (!TIME_FORMAT.includes(str)) {
       value += str;
       continue;
     }

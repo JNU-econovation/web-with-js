@@ -5,7 +5,8 @@ const { parseToTime } = require("./time-parser.js");
 const { isSplittableBy, consistOfNumAnd } = require("../util/validator.js");
 
 const {
-  TIME_UNIT,
+  TIME_FORMAT,
+  FORMAT_OF,
   DELIMITER,
   DAY_TO,
   HOUR_TO,
@@ -22,7 +23,7 @@ class TimeConverter {
     if (!isSplittableBy(DELIMITER, command)) {
       return new ValidationError(ERR_MSG.UNCOMPLETE_INPUT);
     }
-    if (!consistOfNumAnd(TIME_UNIT, command)) {
+    if (!consistOfNumAnd(TIME_FORMAT, command)) {
       return new ValidationError(ERR_MSG.INVALID_VALUE);
     }
 
@@ -30,13 +31,13 @@ class TimeConverter {
     const baseTime = new Time(parseToTime(timeString));
     baseTime.adjustAllUnit();
 
-    if (unit === "d") {
+    if (unit === FORMAT_OF.day) {
       this.convertToDay(baseTime);
-    } else if (unit === "h") {
+    } else if (unit === FORMAT_OF.hour) {
       this.convertToHour(baseTime);
-    } else if (unit === "m") {
+    } else if (unit === FORMAT_OF.minute) {
       this.convertToMinute(baseTime);
-    } else if (unit === "s") {
+    } else if (unit === FORMAT_OF.second) {
       this.convertToSecond(baseTime);
     }
   }
