@@ -1,7 +1,7 @@
 const ERROR_INVALID_WORD_MESSAGE = "에러: 허용하지 않는 단어가 존재합니다.";
 const ERROR_INVALID_INPUT_MESSAGE = "에러 : 입력이 올바르지 않습니다.";
 const VALID = true;
-const UNVALID = false;
+const INVALID = false;
 
 class Parser {
   constructor(command) {
@@ -26,7 +26,7 @@ class Parser {
       return VALID;
     } catch (error) {
       console.log(error.message);
-      return UNVALID;
+      return INVALID;
     }
   };
 
@@ -40,7 +40,7 @@ class Parser {
       return VALID;
     } catch (error) {
       console.log(error.message);
-      return UNVALID;
+      return INVALID;
     }
   };
 
