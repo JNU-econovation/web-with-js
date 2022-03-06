@@ -21,7 +21,6 @@ const parseToTime = (expression) => {
     }
     value = "";
   }
-  console.log(time);
 
   return time;
 };

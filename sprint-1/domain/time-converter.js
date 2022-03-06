@@ -1,7 +1,16 @@
 const Time = require("./time.js");
+const ValidationError = require("../util/error.js");
 
 const { parseToTime } = require("./time-parser.js");
-const { DAY_TO, HOUR_TO, MIN_TO } = require("../constants.js");
+const { isSplittableBy } = require("../util/validator.js");
+
+const {
+  DELIMITER,
+  DAY_TO,
+  HOUR_TO,
+  MIN_TO,
+  ERR_MSG,
+} = require("../constants.js");
 
 class TimeConverter {
   constructor() {
@@ -9,11 +18,14 @@ class TimeConverter {
   }
 
   convert(command) {
+    if (!isSplittableBy(DELIMITER, command)) {
+      return new ValidationError(ERR_MSG.UNCOMPLETE_INPUT);
+    }
+
     const [timeString, unit] = command.split(" ");
     const baseTime = new Time(parseToTime(timeString));
     baseTime.adjustAllUnit();
 
-    console.log(baseTime);
     if (unit === "d") {
       this.convertToDay(baseTime);
     } else if (unit === "h") {
