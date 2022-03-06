@@ -13,10 +13,6 @@ class TimeConverter {
     this.baseUnit = "";
     this.convertTargetTime = "";
     this.timeInSec = 0;
-    this.resultDay = 0;
-    this.resultHour = 0;
-    this.resultMin = 0;
-    this.resultSec = 0;
   }
 
   // 파싱된 명령어를 받아옴.
@@ -66,22 +62,25 @@ class TimeConverter {
   // 입력으로 주어진 단위에 따라 시간을 나눔.
   convertTimeInSecUseBaseUnit = () => {
     let leftOverSec = this.timeInSec;
-
+    let resultDay = 0;
+    let resultHour = 0;
+    let resultMin = 0;
+    let resultSec = 0;
     switch (this.baseUnit) {
       case "d":
-        this.resultDay = parseInt(leftOverSec / DAY_PER_SEC);
+        resultDay = parseInt(leftOverSec / DAY_PER_SEC);
         leftOverSec = leftOverSec % DAY_PER_SEC;
       case "h":
-        this.resultHour = parseInt(leftOverSec / HOUR_PER_SEC);
+        resultHour = parseInt(leftOverSec / HOUR_PER_SEC);
         leftOverSec = leftOverSec % HOUR_PER_SEC;
       case "m":
-        this.resultMin = parseInt(leftOverSec / MIN_PER_SEC);
+        resultMin = parseInt(leftOverSec / MIN_PER_SEC);
         leftOverSec = leftOverSec % MIN_PER_SEC;
       default:
-        this.resultSec = parseInt(leftOverSec);
+        resultSec = parseInt(leftOverSec);
     }
 
-    return [this.resultDay, this.resultHour, this.resultMin, this.resultSec];
+    return [resultDay, resultHour, resultMin, resultSec];
   };
 
   debugDescription = () => {
@@ -90,10 +89,6 @@ class TimeConverter {
     console.log("baseUnit :" + this.baseUnit);
     console.log("convertTargetTime :" + this.convertTargetTime);
     console.log("timeInSec :" + this.timeInSec);
-    console.log("resultDay:" + this.resultDay);
-    console.log("resultHour:" + this.resultHour);
-    console.log("resultMin:" + this.resultMin);
-    console.log("resultSec:" + this.resultSec);
   };
 }
 
