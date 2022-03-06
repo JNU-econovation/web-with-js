@@ -27,7 +27,7 @@ class TimeConverter {
       return new ValidationError(ERR_MSG.INVALID_VALUE);
     }
 
-    const [timeString, unit] = command.split(" ");
+    const [timeString, unit] = command.split(DELIMITER);
     const baseTime = new Time(parseToTime(timeString));
     baseTime.adjustAllUnit();
 
