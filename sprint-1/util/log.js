@@ -11,17 +11,17 @@ class Log {
 
   convertToSeconds() {
     for (let [index, unit] of this.#timeUnits.entries()) {
-      this.makeresultOfConvertingToSeconds(index, unit);
+      this.makeResultOfConvertingToSeconds(index, unit);
     }
   }
 
-  makeresultOfConvertingToSeconds(index, unit) {
+  makeResultOfConvertingToSeconds(index, unit) {
     if (unit in this.converted) {
       this.#resultOfConvertingToSeconds += this.converted[unit] * this.#multiplyValues[index];
     }
   }
 
-  converToTargetUnit() {
+  convertToTargetUnit() {
     let targetIndex = this.#timeUnits.findIndex(value => value === this.targetUnit);
     this.makeAfterUnit(targetIndex);
   }
