@@ -5,7 +5,13 @@ const Log = require("./util/log.js");
 const input = "1600s m";
 const [beforeConvert, afterConvertUnit] = input.split(" ");
 
-timeConverter = new TimeConverter(beforeConvert);
-log = new Log(timeConverter.converter(), afterConvertUnit);
+timeConverter = new TimeConverter(beforeConvert, afterConvertUnit);
+
+timeConverter.splitInputTimeByAllUnit();
+timeConverter.convertToSeconds();
+timeConverter.convertToTargetUnit();
+result = timeConverter.getResult();
+
+log = new Log(result);
 
 log.print();
