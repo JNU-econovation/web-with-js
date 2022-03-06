@@ -20,9 +20,7 @@ class Parser {
     try {
       for (let i = 0; i < command.length; i++) {
         if (validCharList.includes(command[i]) === false) {
-          throw new Error(
-            ERROR_INVALID_WORD_MESSAGE + `: not allow this word : ${command[i]}`
-          );
+          throw new Error(`${command[i]}` + ERROR_INVALID_WORD_MESSAGE);
         }
       }
       return VALID;
