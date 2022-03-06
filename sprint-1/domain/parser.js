@@ -49,11 +49,19 @@ class Parser {
   // 쪼갠 명령어가 유효한지 검증
   isSplitCommandValid = (splitCommand) => {
     return (
-      splitCommand.length == 2 &&
-      splitCommand[1].length == 1 &&
+      this.isCommandSeparateTwoPart(splitCommand) &&
+      this.isUnitValid(splitCommand) &&
       !(true && this.filterInt(splitCommand[0])) &&
       !(true && this.filterInt(splitCommand[1]))
     );
+  };
+
+  isCommandSeparateTwoPart = (splitCommand) => {
+    return splitCommand.length == 2;
+  };
+
+  isUnitValid = (splitCommand) => {
+    return splitCommand[1].length == 1;
   };
 
   //정수형인지 엄격한 검증
