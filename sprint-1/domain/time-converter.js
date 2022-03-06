@@ -1,6 +1,6 @@
-const DayPerSec = 86400;
-const HourPerSec = 3600;
-const MinPerSec = 60;
+const DAY_PER_SEC = 86400;
+const HOUR_PER_SEC = 3600;
+const MIN_PER_SEC = 60;
 const Parser = require("./parser");
 const PARSE_SUCCESS = true;
 const PARSE_FAIL = false;
@@ -39,17 +39,17 @@ class TimeConverter {
         case "d":
           numericString = this.convertTargetTime.substring(numericStartIdx, i);
           numericStartIdx = i + 1;
-          second += Number(numericString) * DayPerSec;
+          second += Number(numericString) * DAY_PER_SEC;
           break;
         case "h":
           numericString = this.convertTargetTime.substring(numericStartIdx, i);
           numericStartIdx = i + 1;
-          second += Number(numericString) * HourPerSec;
+          second += Number(numericString) * HOUR_PER_SEC;
           break;
         case "m":
           numericString = this.convertTargetTime.substring(numericStartIdx, i);
           numericStartIdx = i + 1;
-          second += Number(numericString) * MinPerSec;
+          second += Number(numericString) * MIN_PER_SEC;
           break;
         case "s":
           numericString = this.convertTargetTime.substring(numericStartIdx, i);
@@ -68,14 +68,14 @@ class TimeConverter {
 
     switch (this.baseUnit) {
       case "d":
-        this.resultDay = parseInt(leftOverSec / DayPerSec);
-        leftOverSec = leftOverSec % DayPerSec;
+        this.resultDay = parseInt(leftOverSec / DAY_PER_SEC);
+        leftOverSec = leftOverSec % DAY_PER_SEC;
       case "h":
-        this.resultHour = parseInt(leftOverSec / HourPerSec);
-        leftOverSec = leftOverSec % HourPerSec;
+        this.resultHour = parseInt(leftOverSec / HOUR_PER_SEC);
+        leftOverSec = leftOverSec % HOUR_PER_SEC;
       case "m":
-        this.resultMin = parseInt(leftOverSec / MinPerSec);
-        leftOverSec = leftOverSec % MinPerSec;
+        this.resultMin = parseInt(leftOverSec / MIN_PER_SEC);
+        leftOverSec = leftOverSec % MIN_PER_SEC;
       default:
         this.resultSec = parseInt(leftOverSec);
     }
