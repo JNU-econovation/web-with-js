@@ -5,7 +5,7 @@ class TimeConverter {
     this.beforeConvertTime = beforeConvertTime;
   }
 
-  splitByUnit(unit) {
+  splitInputTimeByUnit(unit) {
     let afterSplit = [];
 
     if (this.beforeConvertTime.indexOf(unit) != -1) {
@@ -19,7 +19,7 @@ class TimeConverter {
     const timeUnits = ["d", "h", "m", "s"];
 
     for (let key of timeUnits) {
-      this.splitByUnit(key);
+      this.splitInputTimeByUnit(key);
     }
     return this.#result;
   }
