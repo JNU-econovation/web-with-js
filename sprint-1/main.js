@@ -18,7 +18,7 @@ for (let i = 0; i < inputList.length; i++) {
   console.log("입력 :" + inputList[i]);
   const test = new TimeConverter(inputList[i]);
 
-  if (test.setUpCommandParser()) {
+  if (test.isSuccessCommandParse()) {
     test.convertTimeToSec();
     let convertResultTime = test.convertTimeInSecUseBaseUnit();
     const timeLogger = new Log(convertResultTime);

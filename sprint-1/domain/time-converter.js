@@ -19,7 +19,7 @@ class TimeConverter {
   }
 
   // 파싱된 명령어를 받아옴.
-  setUpCommandParser = () => {
+  isSuccessCommandParse = () => {
     const parseList = this.commandParser.parseCommand();
     if (parseList === null) {
       return PARSE_FAIL;
