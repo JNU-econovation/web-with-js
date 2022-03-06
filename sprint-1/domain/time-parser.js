@@ -1,4 +1,4 @@
-const { TIME_FORMAT } = require("../constants.js");
+const { TIME_FORMAT, FORMAT_OF } = require("../constants.js");
 
 const parseToTime = (expression) => {
   let value = "";
@@ -10,13 +10,13 @@ const parseToTime = (expression) => {
       continue;
     }
 
-    if (str === "d") {
+    if (str === FORMAT_OF.day) {
       time.day += Number(value);
-    } else if (str === "h") {
+    } else if (str === FORMAT_OF.hour) {
       time.hour += Number(value);
-    } else if (str === "m") {
+    } else if (str === FORMAT_OF.minute) {
       time.minute += Number(value);
-    } else if (str === "s") {
+    } else if (str === FORMAT_OF.second) {
       time.second += Number(value);
     }
     value = "";
