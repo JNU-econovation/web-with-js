@@ -30,29 +30,30 @@ class TimeConverter {
 
   // 파싱된 명령어 중 시간 부분을 일단 초 단위로 바꿈
   convertTimeToSec = () => {
-    let numericStart = 0;
+    let numericStartIdx = 0;
     let numericString = "";
     let second = 0;
+
     for (let i = 0; i < this.convertTargetTime.length; i++) {
       switch (this.convertTargetTime[i]) {
         case "d":
-          numericString = this.convertTargetTime.substring(numericStart, i);
-          numericStart = i + 1;
+          numericString = this.convertTargetTime.substring(numericStartIdx, i);
+          numericStartIdx = i + 1;
           second += Number(numericString) * DayPerSec;
           break;
         case "h":
-          numericString = this.convertTargetTime.substring(numericStart, i);
-          numericStart = i + 1;
+          numericString = this.convertTargetTime.substring(numericStartIdx, i);
+          numericStartIdx = i + 1;
           second += Number(numericString) * HourPerSec;
           break;
         case "m":
-          numericString = this.convertTargetTime.substring(numericStart, i);
-          numericStart = i + 1;
+          numericString = this.convertTargetTime.substring(numericStartIdx, i);
+          numericStartIdx = i + 1;
           second += Number(numericString) * MinPerSec;
           break;
         case "s":
-          numericString = this.convertTargetTime.substring(numericStart, i);
-          numericStart = i + 1;
+          numericString = this.convertTargetTime.substring(numericStartIdx, i);
+          numericStartIdx = i + 1;
           second += Number(numericString);
           break;
         default:
