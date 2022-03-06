@@ -20,8 +20,8 @@ for (let i = 0; i < inputList.length; i++) {
 
   if (test.isSuccessCommandParse()) {
     test.convertTimeToSec();
-    let convertResultTime = test.convertTimeInSecUseBaseUnit();
-    const timeLogger = new Log(convertResultTime);
-    timeLogger.printConvertResult();
+    let convertResultTimeList = test.convertTimeInSecUseBaseUnit();
+    const timeLogger = new Log();
+    timeLogger.printConvertResult(convertResultTimeList);
   }
 }

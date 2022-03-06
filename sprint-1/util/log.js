@@ -1,10 +1,6 @@
 class Log {
-  constructor(convertResultTimeList) {
-    this.convertResultTimeList = convertResultTimeList;
-  }
-
-  printConvertResult() {
-    const [day, hour, min, sec] = this.convertResultTimeList;
+  printConvertResult(convertResultTimeList) {
+    const [day, hour, min, sec] = convertResultTimeList;
     const dayString = day == 0 ? "" : day + "d";
     const hourString = hour == 0 ? "" : hour + "h";
     const minString = min == 0 ? "" : min + "m";
