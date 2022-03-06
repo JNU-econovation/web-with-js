@@ -6,8 +6,6 @@ const INVALID = false;
 class Parser {
   constructor(command) {
     this.command = command;
-    this.baseUnit = "";
-    this.convertTargetTime = "";
   }
 
   // 유효한 단어를 사용하였는지 검증
@@ -79,12 +77,9 @@ class Parser {
     ) {
       return null;
     }
+    const [convertTargetTime, baseUnit] = this.command.split(" ");
 
-    const splitCommand = this.command.split(" ");
-    this.convertTargetTime = splitCommand[0];
-    this.baseUnit = splitCommand[1];
-
-    return [this.baseUnit, this.convertTargetTime];
+    return [baseUnit, convertTargetTime];
   };
 }
 
