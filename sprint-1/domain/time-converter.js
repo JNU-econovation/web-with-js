@@ -1,7 +1,8 @@
+const Parser = require("./parser");
+
 const DAY_PER_SEC = 86400;
 const HOUR_PER_SEC = 3600;
 const MIN_PER_SEC = 60;
-const Parser = require("./parser");
 const PARSE_SUCCESS = true;
 const PARSE_FAIL = false;
 
